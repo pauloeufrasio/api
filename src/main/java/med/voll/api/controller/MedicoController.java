@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class MedicoController {
 
     @PostMapping
-    public void cadastrar(@RequestBody String json){
+    public void cadastrar(@RequestBody String json){ // JSON (JavaScript Object Notation) é um formato utilizado para representação de informações, assim como XML e CSV.
         System.out.println(json);
 
     }
