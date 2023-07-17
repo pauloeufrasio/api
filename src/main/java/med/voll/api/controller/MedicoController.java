@@ -7,6 +7,9 @@ import med.voll.api.medico.DadosListagemMedico;
 import med.voll.api.medico.Medico;
 import med.voll.api.medico.MedicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,8 +29,8 @@ public class MedicoController {
         repository.save(new Medico(dados));
     }
     @GetMapping // @GetMapping é uma anotação do Spring Framework usada para mapear uma requisição HTTP GET para um método específico em um controlador (controller) de uma aplicação web.
-    public List<DadosListagemMedico> list() { // retorno do método list() é uma lista de objetos do tipo DadosListagemMedico. Esse método utiliza o método findAll() do objeto repository para obter todos os registros do banco de dados relacionados à entidade Medico. Esses registros são então convertidos em uma stream (fluxo) e mapeados para objetos DadosListagemMedico por meio do método de referência DadosListagemMedico::new. Finalmente, a stream é coletada em uma lista usando o método toList().
-        return repository.findAll().stream().map(DadosListagemMedico::new).toList();
+    public Page<DadosListagemMedico> list(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao) { // retorno do método list() é uma lista de objetos do tipo DadosListagemMedico. Esse método utiliza o método findAll() do objeto repository para obter todos os registros do banco de dados relacionados à entidade Medico. Esses registros são então convertidos em uma stream (fluxo) e mapeados para objetos DadosListagemMedico por meio do método de referência DadosListagemMedico::new. Finalmente, a stream é coletada em uma lista usando o método toList().
+        return repository.findAll(paginacao).map(DadosListagemMedico::new);
 
     }
 
