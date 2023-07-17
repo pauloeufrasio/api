@@ -24,6 +24,8 @@ public class Medico { // JPA para representar um tabela no banco de dados.
     private String email;
     private String crm;
 
+    private  String telefone;
+
     @Enumerated(EnumType.STRING)
     Especialidade especialidade;
 
@@ -33,6 +35,7 @@ public class Medico { // JPA para representar um tabela no banco de dados.
     public Medico(DadosCadastroMedico dados) {
         this.nome = dados.nome();
         this.email = dados.email();
+        this.telefone = dados.telefone();
         this.crm = dados.crm();
         this.especialidade = dados.especialidade();
         this.endereco = new Endereco(dados.endereco());
