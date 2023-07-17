@@ -9,7 +9,7 @@ import med.voll.api.endereco.Endereco;
 
 @Table(name = "medicos")
 // Essa anotação é usada para fornecer detalhes adicionais sobre a tabela associada a uma entidade. Ela pode ser usada para especificar o nome da tabela.JPA
-@Entity(name = "Medico")
+@Entity
 // Essa anotação é usada para marcar uma classe como uma entidade. Uma entidade é uma classe que representa uma tabela no banco de dados.JPA
 @Getter // Essa anotação é usada para gerar automaticamente métodos getters para os campos da classe.Lombok
 @NoArgsConstructor // Essa anotação gera automaticamente um construtor sem argumentos para a classe.Lombok

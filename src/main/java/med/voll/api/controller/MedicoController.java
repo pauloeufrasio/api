@@ -1,6 +1,7 @@
 package med.voll.api.controller;
 
 
+import jakarta.validation.Valid;
 import med.voll.api.medico.DadosCadastroMedico;
 import med.voll.api.medico.Medico;
 import med.voll.api.medico.MedicoRepository;
@@ -20,7 +21,7 @@ public class MedicoController {
     @PostMapping //@PostMapping: Determina que o método aceitará requisições HTTP do tipo POST.
     // @RequestBody indica que um parâmetro de método deve ser associado ao valor do corpo da solicitação HTTP
     @Transactional // anotação
-    public void cadastrar(@RequestBody DadosCadastroMedico dados){ // JSON (JavaScript Object Notation) é um formato utilizado para representação de informações, assim como XML e CSV.
+    public void cadastrar(@RequestBody @Valid DadosCadastroMedico dados){ // JSON (JavaScript Object Notation) é um formato utilizado para representação de informações, assim como XML e CSV.
         repository.save(new Medico(dados));
     }
 
