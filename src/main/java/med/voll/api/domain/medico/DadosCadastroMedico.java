@@ -1,11 +1,11 @@
-package med.voll.api.medico;
+package med.voll.api.domain.medico;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-import med.voll.api.endereco.DadosEndereco;
+import med.voll.api.domain.endereco.DadosEndereco;
 
 public record DadosCadastroMedico(
         @NotBlank // A anotação @NotBlank é semelhante à anotação @NotNull, mas é geralmente usada em campos de texto para indicar que o valor não pode ser nulo nem vazio (espaços em branco).
