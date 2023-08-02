@@ -6,18 +6,17 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import med.voll.api.domain.endereco.Endereco;
-
-@Table(name = "medicos")
 // Essa anotação é usada para fornecer detalhes adicionais sobre a tabela associada a uma entidade. Ela pode ser usada para especificar o nome da tabela.JPA
-@Entity
+@Table(name = "medicos")
 // Essa anotação é usada para marcar uma classe como uma entidade. Uma entidade é uma classe que representa uma tabela no banco de dados.JPA
+@Entity
 @Getter // Essa anotação é usada para gerar automaticamente métodos getters para os campos da classe.Lombok
 @NoArgsConstructor // Essa anotação gera automaticamente um construtor sem argumentos para a classe.Lombok
 @AllArgsConstructor // Essa anotação gera um construtor que aceita todos os campos da classe como argumentos.Lombok
 @EqualsAndHashCode(of = "id")
 public class Medico { // JPA para representar um tabela no banco de dados.
 
-    @Id
+    @Id // Indica que o atributo 'id' é a chave primária da entidade
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String nome;
@@ -26,10 +25,10 @@ public class Medico { // JPA para representar um tabela no banco de dados.
 
     private  String telefone;
 
-    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.STRING) // Indica que o enum TipoProduto será armazenado como uma string
     Especialidade especialidade;
 
-    @Embedded
+    @Embedded  // Indica que a classe Endereco é embutida na entidade Cliente
     private Endereco endereco;
     private boolean ativo;
 
@@ -55,7 +54,7 @@ public class Medico { // JPA para representar um tabela no banco de dados.
         }
     }
 
-    public void exluir() {
+    public void excluir() {
         this.ativo = false;
     }
 }
