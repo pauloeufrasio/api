@@ -17,7 +17,10 @@ public class TratadorDeErros {
     }
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity tratarErro400(MethodArgumentNotValidException ex) {
+        // Obtém a lista de erros de validação dos campos do objeto
         var erros = ex.getFieldErrors();
+        // Retorna uma resposta HTTP 400 (Bad Request) contendo a lista de erros de validação
+        // A lista de erros é mapeada para uma lista de objetos DadosErrosValidacoes antes de ser retornada
         return ResponseEntity.badRequest().body(erros.stream().map(DadosErrosValidacoes::new).toList());
     }
     private record DadosErrosValidacoes(String campo,String mensagem) { // DTO implementada dentro da propria classe TratadorDeErros
